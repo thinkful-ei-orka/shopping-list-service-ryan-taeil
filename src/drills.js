@@ -16,7 +16,7 @@ function searchProductByName(searchTerm) {
         })
 }
 
-searchProductByName('Fish')
+// searchProductByName('Fish')
 
 function paginateItems(pageNum) {
     const productsPerPage = 6
@@ -31,4 +31,47 @@ function paginateItems(pageNum) {
         })
 }
 
-paginateItems(2)
+// paginateItems(2)
+
+function searchAfterDate(daysAgo) {
+    let date = new Date();
+    date.setDate(date.getDate() - daysAgo);
+
+    knexInstance
+        .select('*')
+        .from('shopping_list')
+        .where('date_added', '>', date)
+        .orderBy([{ column: 'date_added', order: 'DESC' }])
+        .then(data => {
+            console.log('logging date');
+            console.log(data);
+        })
+}
+
+// searchAfterDate(2);
+
+function getTotalCost() {
+    const categories = ['Main', 'Snack','Lunch', 'Breakfast'];
+
+    categories.forEach((category) => {
+        knexInstance
+            .select('*')
+            .from('shopping_list')
+            .where({category: category})
+            .then(data => {
+                console.log(`${category} Total: $${getTotal(data)}`);
+            });
+    });
+}
+
+function getTotal(data) {
+    let total = 0;
+    data.forEach((item) => {
+        let price = parseFloat(item.price);
+        total += price;
+        total = Math.round(total * 100) / 100;
+    });
+    return total;
+}
+
+// getTotalCost();
