@@ -25,7 +25,7 @@ function searchByProduceName(searchTerm) {
     });
 }
 
-searchByProduceName('holo');
+// searchByProduceName('holo');
 
 function paginateProducts(page) {
   const productsPerPage = 10;
