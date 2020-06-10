@@ -89,7 +89,6 @@ describe('Shopping List mockup', function () {
       return ShoppingListService.deleteItem(db, idToDelete)
         .then(() => ShoppingListService.getItems(db))
         .then((allItems) => {
-          // copy the test items array without the removed item
           const expected = listItems
             .filter((item) => item.id !== idToDelete)
             .map((item) => ({
