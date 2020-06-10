@@ -1,17 +1,18 @@
-require('dotenv').config()
+'use strict';
+require('dotenv').config();
 const knex = require('knex');
 
 const knexInstance = knex({
   client: 'pg',
   connection: process.env.DB_URL,
-})
+});
 
 function searchProductByName(searchTerm) {
   knexInstance
     .select('*')
     .from('shopping_list')
     .where('name', 'ILIKE', `%${searchTerm}%`)
-    .then(data => {
+    .then((data) => {
       console.log(data);
     });
 }
@@ -26,7 +27,7 @@ function paginateItems(pageNum) {
     .from('shopping_list')
     .limit(productsPerPage)
     .offset(offset)
-    .then(data => {
+    .then((data) => {
       console.log(data);
     });
 }
@@ -42,7 +43,7 @@ function searchAfterDate(daysAgo) {
     .from('shopping_list')
     .where('date_added', '>', date)
     .orderBy([{ column: 'date_added', order: 'DESC' }])
-    .then(data => {
+    .then((data) => {
       console.log('logging date');
       console.log(data);
     });
@@ -51,14 +52,14 @@ function searchAfterDate(daysAgo) {
 // searchAfterDate(2);
 
 function getTotalCost() {
-  const categories = ['Main', 'Snack','Lunch', 'Breakfast'];
+  const categories = ['Main', 'Snack', 'Lunch', 'Breakfast'];
 
   categories.forEach((category) => {
     knexInstance
       .select('*')
       .from('shopping_list')
-      .where({category: category})
-      .then(data => {
+      .where({ category: category })
+      .then((data) => {
         console.log(`${category} Total: $${getTotal(data)}`);
       });
   });
