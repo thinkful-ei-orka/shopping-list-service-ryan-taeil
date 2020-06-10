@@ -17,7 +17,7 @@ function searchProductByName(searchTerm) {
     });
 }
 
-// searchProductByName('Fish')
+searchProductByName('Fish');
 
 function paginateItems(pageNum) {
   const productsPerPage = 6;

@@ -1,4 +1,5 @@
 'use strict';
+
 const ShoppingListService = {
   getItems(knex) {
     return knex.select('*').from('shopping_list');
