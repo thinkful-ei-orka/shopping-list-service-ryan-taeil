@@ -25,11 +25,11 @@ function searchByProduceName(searchTerm) {
     });
 }
 
-// searchByProduceName('holo')
+searchByProduceName('holo');
 
 function paginateProducts(page) {
-  const productsPerPage = 10
-  const offset = productsPerPage * (page - 1)
+  const productsPerPage = 10;
+  const offset = productsPerPage * (page - 1);
   knexInstance
     .select('*')
     .from('amazong_products')
@@ -40,7 +40,7 @@ function paginateProducts(page) {
     });
 }
 
-// paginateProducts(2)
+// paginateProducts(2);
 
 function getProductsWithImages() {
   knexInstance
@@ -52,7 +52,7 @@ function getProductsWithImages() {
     });
 }
 
-// getProductsWithImages()
+// getProductsWithImages();
 
 function mostPopularVideosForDays(days) {
   knexInstance
@@ -74,4 +74,4 @@ function mostPopularVideosForDays(days) {
     });
 }
 
-// mostPopularVideosForDays(30)
+// mostPopularVideosForDays(30);
