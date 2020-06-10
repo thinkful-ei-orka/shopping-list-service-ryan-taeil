@@ -104,7 +104,7 @@ describe('Shopping List mockup', function () {
       const newItemData = {
         name: 'new title',
         price: '14.76',
-        date_added: Date.now(),
+        date_added: new Date('2020-05-20T23:09:07.838Z'),
         checked: true,
       };
       const originalItem = listItems[idOfItemToUpdate - 1];
@@ -131,7 +131,7 @@ describe('Shopping List mockup', function () {
       const newItem = {
         name: 'New item',
         price: '10.00',
-        date_added: Date.now(),
+        date_added: new Date('2020-05-20T23:09:07.838Z'),
         checked: true,
         category: 'Lunch',
       };
